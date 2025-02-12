@@ -396,7 +396,7 @@ static const struct cred *access_override_creds(void)
 }
 
 // KernelSU hook
-#ifdef CONFIG_KSU
+#ifdef CONFIG_KSU_MANUAL_HOOK
 extern int ksu_handle_faccessat(int *dfd, const char __user **filename_user, int *mode,
 			 int *flags);
 #endif
@@ -410,7 +410,7 @@ long do_faccessat(int dfd, const char __user *filename, int mode, int flags)
 	const struct cred *old_cred = NULL;
 
 	// KernelSU hook
-#ifdef CONFIG_KSU
+#ifdef CONFIG_KSU_MANUAL_HOOK
 	ksu_handle_faccessat(&dfd, &filename, &mode, NULL);
 #endif
 
