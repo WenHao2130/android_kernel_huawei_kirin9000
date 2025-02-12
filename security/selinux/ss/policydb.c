@@ -536,9 +536,9 @@ static void policydb_init(struct policydb *p)
 	avtab_init(&p->te_avtab);
 	cond_policydb_init(p);
 
-	ebitmap_init(&p->filename_trans_ttypes, false);
-	ebitmap_init(&p->policycaps, false);
-	ebitmap_init(&p->permissive_map, false);
+	ebitmap_init(&p->filename_trans_ttypes);
+	ebitmap_init(&p->policycaps);
+	ebitmap_init(&p->permissive_map);
 }
 
 /*
@@ -1176,8 +1176,8 @@ bad:
 
 static void type_set_init(struct type_set *t)
 {
-	ebitmap_init(&t->types, false);
-	ebitmap_init(&t->negset, false);
+	ebitmap_init(&t->types);
+	ebitmap_init(&t->negset);
 }
 
 static int type_set_read(struct type_set *t, void *fp)
@@ -1938,7 +1938,7 @@ static int filename_trans_read_helper_compat(struct policydb *p, void *fp)
 		if (!datum)
 			goto out;
 
-		ebitmap_init(&datum->stypes, false);
+		ebitmap_init(&datum->stypes);
 		datum->otype = otype;
 		datum->next = NULL;
 
@@ -2694,7 +2694,7 @@ int policydb_read(struct policydb *p, void *fp)
 
 	/* just in case ebitmap_init() becomes more than just a memset(0): */
 	for (i = 0; i < p->p_types.nprim; i++)
-		ebitmap_init(&p->type_attr_map_array[i], false);
+		ebitmap_init(&p->type_attr_map_array[i]);
 
 	for (i = 0; i < p->p_types.nprim; i++) {
 		struct ebitmap *e = &p->type_attr_map_array[i];
