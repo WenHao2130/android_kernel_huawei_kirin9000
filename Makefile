@@ -273,20 +273,15 @@ VPATH		:= $(srctree)
 export building_out_of_srctree srctree objtree VPATH
 
 ifeq ($(strip $(cfi_check)),true)
-CLANG_PREBUILTS_PATH ?= $(srctree)/../../prebuilts/cfi_clang/linux-x86/cfi_clang/
 else
 ifeq ($(strip $(BOARD_KERNEL_USE_THINLTO)),true)
-CLANG_PREBUILTS_PATH ?= $(srctree)/../../tools/open_source/clang/clang-r383902b/
 else
 LLVM=1
 LLVM_IAS=1
 DEPMOD=depmod
 KMI_GENERATION=9
-CLANG_PREBUILTS_PATH ?= $(srctree)/../../prebuilts/clang/host/linux-x86/clang-r416183b1/
 endif
 endif
-CLANG_PREBUILT_BIN := $(CLANG_PREBUILTS_PATH)bin/
-export CLANG_PREBUILTS_PATH
 
 export PATH := $(srctree)/../../tools/open_source/lz4/lz4-1.9.2/:$(PATH)
 
@@ -450,9 +445,8 @@ HOST_LFS_LDFLAGS := $(shell getconf LFS_LDFLAGS 2>/dev/null)
 HOST_LFS_LIBS := $(shell getconf LFS_LIBS 2>/dev/null)
 
 ifneq ($(LLVM),)
-HOSTCC       = $(CLANG_PREBUILT_BIN)clang
-HOSTCXX      = $(CLANG_PREBUILT_BIN)clang++
-
+HOSTCC	= clang
+HOSTCXX	= clang++
 else
 HOSTCC	= gcc
 HOSTCXX	= g++
@@ -470,19 +464,16 @@ KBUILD_HOSTLDLIBS   := $(HOST_LFS_LIBS) $(HOSTLDLIBS)
 # Make variables (CC, etc...)
 CPP		= $(CC) -E
 ifneq ($(LLVM),)
-CC		= $(CLANG_PREBUILT_BIN)clang
-LD		= $(CLANG_PREBUILT_BIN)ld.lld
-AR		= $(CLANG_PREBUILT_BIN)llvm-ar
-NM		= $(CLANG_PREBUILT_BIN)llvm-nm
-OBJCOPY		= $(CLANG_PREBUILT_BIN)llvm-objcopy
-OBJDUMP		= $(CLANG_PREBUILT_BIN)llvm-objdump
-READELF		= $(CLANG_PREBUILT_BIN)llvm-readelf
-STRIP		= $(CLANG_PREBUILT_BIN)llvm-strip
+CC		= clang
+LD		= ld.lld
+AR		= llvm-ar
+NM		= llvm-nm
+OBJCOPY		= llvm-objcopy
+OBJDUMP		= llvm-objdump
+READELF		= llvm-readelf
+STRIP		= llvm-strip
 else
-ifeq (,$(strip $(KP_PATCH)))
-CCACHE		= $(srctree)/../../prebuilts/misc/linux-x86/ccache/ccache
-endif
-CC		= $(wildcard $(CCACHE)) $(CROSS_COMPILE)gcc
+CC		= $(CROSS_COMPILE)gcc
 LD		= $(CROSS_COMPILE)ld
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
