@@ -75,7 +75,7 @@ int ebitmap_cpy(struct ebitmap *dst, struct ebitmap *src, const bool protectable
 {
 	struct ebitmap_node *n, *new, *prev;
 
-	ebitmap_init(dst);
+	ebitmap_init(dst, protectable);
 	n = src->node;
 	prev = NULL;
 	while (n) {
@@ -108,7 +108,7 @@ int ebitmap_and(struct ebitmap *dst, struct ebitmap *e1, struct ebitmap *e2)
 	struct ebitmap_node *n;
 	int bit, rc;
 
-	ebitmap_init(dst);
+	ebitmap_init(dst, false);
 
 	ebitmap_for_each_positive_bit(e1, n, bit) {
 		if (ebitmap_get_bit(e2, bit)) {
@@ -413,7 +413,7 @@ int ebitmap_read(struct ebitmap *e, void *fp, bool protectable)
 	__le32 buf[3];
 	int rc, i;
 
-	ebitmap_init(e);
+	ebitmap_init(e, protectable);
 
 	rc = next_entry(buf, fp, sizeof buf);
 	if (rc < 0)

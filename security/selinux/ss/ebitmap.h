@@ -73,8 +73,9 @@ static inline void ebitmap_init(struct ebitmap *e, const bool protectable)
 	e->protectable = protectable;
 }
 #else
-static inline void ebitmap_init(struct ebitmap *e)
+static inline void ebitmap_init(struct ebitmap *e, const bool protectable)
 {
+	(void)protectable;
 	memset(e, 0, sizeof(*e));
 }
 #endif
