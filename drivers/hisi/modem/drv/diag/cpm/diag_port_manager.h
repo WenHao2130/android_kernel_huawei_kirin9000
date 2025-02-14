@@ -52,7 +52,7 @@
 #include <mdrv.h>
 #include <mdrv_diag_system.h>
 #include <osl_types.h>
-#include "ppm_common.h"
+#include "../ppm/ppm_common.h"
 
 #ifdef __cplusplus
 #if __cplusplus

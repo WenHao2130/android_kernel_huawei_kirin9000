@@ -58,7 +58,7 @@
 #include <drv_comm.h>
 #include <bsp_dt.h>
 #include <bsp_hardtimer.h>
-#include <hardtimer_core.h>
+#include "../balong_timer/hardtimer_core.h"
 #include <bsp_slice.h>
 #include <bsp_version.h>
 #include <securec.h>

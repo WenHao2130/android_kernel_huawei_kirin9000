@@ -56,8 +56,8 @@
 #define THIS_MODU mod_sec_call
 
 #if (defined CONFIG_TZDRIVER) || (defined CONFIG_TRUSTZONE_HM)
-#include <teek_client_api.h>
-#include <teek_client_id.h>
+#include "../../../tzdriver/teek_client_api.h"
+#include "../../../tzdriver/teek_client_id.h"
 
 struct sec_call_param {
     unsigned int param;

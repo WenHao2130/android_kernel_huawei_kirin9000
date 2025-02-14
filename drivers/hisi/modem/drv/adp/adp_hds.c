@@ -46,10 +46,10 @@
  *
  */
 
-#include "bsp_hds_log.h"
-#include "bsp_hds_ind.h"
-#include "bsp_hds_service.h"
-#include "bsp_slice.h"
+#include "../hds/bsp_hds_log.h"
+#include "../hds/bsp_hds_ind.h"
+#include "../hds/bsp_hds_service.h"
+#include "../include/bsp_slice.h"
 
 
 void mdrv_hds_cmd_register(unsigned int cmdid, bsp_hds_func fn)

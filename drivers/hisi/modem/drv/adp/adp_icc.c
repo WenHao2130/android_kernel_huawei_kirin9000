@@ -47,7 +47,7 @@
  */
 
 #include <mdrv.h>
-#include <icc_core.h>
+#include "../icc/icc_core.h"
 
 
 #undef THIS_MODU

@@ -45,7 +45,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#include "bsp_hds_ind.h"
+#include "../hds/bsp_hds_ind.h"
 #include <mdrv_diag.h>
 #include <osl_types.h>
 #include "bsp_trans_report.h"

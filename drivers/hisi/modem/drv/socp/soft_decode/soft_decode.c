@@ -59,7 +59,7 @@
 #include "bsp_diag.h"
 #include <bsp_slice.h>
 #include "hdlc.h"
-#include "diag_port_manager.h"
+#include "../../diag/cpm/diag_port_manager.h"
 
 
 #define THIS_MODU mod_soft_dec

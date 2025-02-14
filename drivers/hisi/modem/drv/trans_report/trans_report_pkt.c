@@ -55,8 +55,8 @@
 
 #include <mdrv_diag.h>
 #include "bsp_slice.h"
-#include "bsp_hds_ind.h"
-#include "bsp_hds_service.h"
+#include "../hds/bsp_hds_ind.h"
+#include "../hds/bsp_hds_service.h"
 #include "bsp_espe.h"
 #include "bsp_trans_report.h"
 
